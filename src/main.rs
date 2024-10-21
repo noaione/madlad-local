@@ -40,10 +40,18 @@ struct ArgsCli {
     device: models::DeviceUse,
 }
 
+fn model_id_to_header(model_id: &str) -> String {
+    // remove jbochi/ then uppercase
+    model_id.replace("jbochi/", "").to_uppercase()
+}
+
 fn main() -> anyhow::Result<()> {
     let args = ArgsCli::parse();
 
-    println!("✨✨✨✨ MADLAD-400-3B-MT ✨✨✨✨\n");
+    println!(
+        "✨✨✨✨ {} ✨✨✨✨\n",
+        model_id_to_header(models::MODEL_ID)
+    );
     let (builder, mut tokenizer) = models::MADLAD400Model::load(args.device)?;
     let device = builder.device();
     let tokenizer = tokenizer
@@ -51,9 +59,9 @@ fn main() -> anyhow::Result<()> {
         .with_truncation(None)
         .map_err(anyhow::Error::msg)?;
 
-    let encoded_string = format!("<2{}>{}", args.target.to_token(), &args.input);
+    let encoded_string = format!("<2{}> {}", args.target.to_token(), &args.input);
 
-    println!("[?] Tokenizing input...");
+    println!("[?] Tokenizing input: {}", &encoded_string);
     let tokens = tokenizer
         .encode(encoded_string, true)
         .map_err(anyhow::Error::msg)?

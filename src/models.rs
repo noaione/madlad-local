@@ -8,14 +8,14 @@ use hf_hub::Repo;
 use tokenizers::Tokenizer;
 
 #[cfg(feature = "model-10b")]
-const MODEL_ID: &str = "jbochi/madlad400-10b-mt";
+pub(crate) const MODEL_ID: &str = "jbochi/madlad400-10b-mt";
 #[cfg(feature = "model-7b-bt")]
-const MODEL_ID: &str = "jbochi/madlad400-7b-mt-bt";
+pub(crate) const MODEL_ID: &str = "jbochi/madlad400-7b-mt-bt";
 #[cfg(feature = "model-7b")]
-const MODEL_ID: &str = "jbochi/madlad400-7b-mt";
+pub(crate) const MODEL_ID: &str = "jbochi/madlad400-7b-mt";
 // Everything elses
 #[cfg(not(any(feature = "model-10b", feature = "model-7b-bt", feature = "model-7b")))]
-const MODEL_ID: &str = "jbochi/madlad400-3b-mt";
+pub(crate) const MODEL_ID: &str = "jbochi/madlad400-3b-mt";
 
 #[derive(Debug, Clone, Copy, Default, ValueEnum)]
 pub(crate) enum DeviceUse {
