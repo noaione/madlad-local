@@ -1,0 +1,24 @@
+[package]
+name = "madlad"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[dependencies]
+candle-core = { git = "https://github.com/huggingface/candle.git", version = "0.7.2" }
+candle-transformers = { git = "https://github.com/huggingface/candle.git", version = "0.7.2" }
+hf-hub = "0.3.2"
+anyhow = "1"
+serde_json = "1"
+tokenizers = { version = "0.20.1", default-features = false, features = ["onig"] }
+clap = { version = "4", features = ["derive"] }
+
+[features]
+# Lock behind features gate so rust-analyzer works.
+cuda-compute = ["candle-core/cuda", "candle-core/cudnn", "candle-transformers/cuda"]
+flash-attn = ["candle-transformers/flash-attn"]
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
