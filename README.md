@@ -1,8 +1,11 @@
 # madlad-local
 
-Run MADLAD-400 3b-MT model locally on your computer, created since I want to try out MADLAD-400 for myself (and also to have local MT models).
+Run MADLAD-400 3b-MT model locally on your computer.
 
 Utilize HuggingFace Hub to download the model locally and Candle as the inference engine.
+
+I created this since there's no simple way to do the inference locally that I like or could find,
+code based on Candle examples but repurposed only for MADLAD-400 use case.
 
 ## Requirements
 - Windows 10/11
