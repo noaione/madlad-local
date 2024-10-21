@@ -15,4 +15,5 @@ $env:CUDA_PATH="C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.4"
 $env:PATH="C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.4\libnvvp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.4\bin;$env:PATH"
 
 # Build with CUDA
-cargo build --release --locked --features cuda-compute
+# Pass other arguments from the command line
+cargo build --release --locked --features cuda-compute $args

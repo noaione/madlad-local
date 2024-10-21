@@ -17,6 +17,9 @@ clap = { version = "4", features = ["derive"] }
 # Lock behind features gate so rust-analyzer works.
 cuda-compute = ["candle-core/cuda", "candle-core/cudnn", "candle-transformers/cuda"]
 flash-attn = ["candle-transformers/flash-attn"]
+model-7b-bt = []
+model-7b = []
+model-10b = []
 
 [profile.release]
 codegen-units = 1
